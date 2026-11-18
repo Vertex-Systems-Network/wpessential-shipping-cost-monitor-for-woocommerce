@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WPEssential Shipping Margin Monitor for WooCommerce
- * Plugin URI: https://github.com/Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce/wiki
+ * Plugin URI: https://github.com/Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce/wiki
  * Description: Shipping cost intelligence and margin reporting for WooCommerce.
  * Version: 1.0.0
  * Requires at least: 7.0

@@ -39,7 +39,7 @@ WooCommerce 11.2 or later. The plugin uses WooCommerce order APIs and works with
 
 **Documentation**
 
-A step-by-step guide with screenshots is built into the plugin: click **Documentation** under the plugin's name on the Plugins screen, or on the Shipping Margin Monitor dashboard. The same guide is on the project wiki: https://github.com/Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce/wiki
+A step-by-step guide with screenshots is built into the plugin: click **Documentation** under the plugin's name on the Plugins screen, or on the Shipping Margin Monitor dashboard. The same guide is on the project wiki: https://github.com/Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce/wiki
 
 WooCommerce is a trademark of Automattic Inc. This plugin is developed by WPEssential and is not affiliated with, endorsed by or sponsored by Automattic or WooCommerce.
 

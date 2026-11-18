@@ -1,7 +1,7 @@
 # AI audit and execution plan
 
 **Last reconciled:** 2026-11-11 against repository head `4e568c4` plus the release-preparation change set that introduced this revision.  
-**Repository:** `Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce`  
+**Repository:** `Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce`  
 **Purpose:** Route ChatGPT, Claude, Gemini, Cursor, Copilot and human contributors to the right source of truth and the next unblocked task.
 
 This document holds **rules and routing only**. It deliberately carries no gate counts, build IDs or staging snapshots, because copies of status drift. Read status where it is owned:
@@ -58,7 +58,7 @@ The repository is AI-operated (Gate F in `OWNER-DECISION-REGISTER.md`). When a t
 
 ## Contributor protocol (all AI tools and humans)
 
-1. Confirm the repository is exactly `Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce` and inspect the current default branch head before editing.
+1. Confirm the repository is exactly `Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce` and inspect the current default branch head before editing.
 2. Read `AGENTS.md`, this plan, the README status block, the assigned backlog row and its cited sources. Check current files rather than trusting copied chat context.
 3. Take the first actionable row above, or the highest-priority unblocked backlog item. Do a concrete implementation or verification in the session and meet its acceptance evidence where possible.
 4. Check existing feature IDs before adding any option or setting. Do not duplicate controls, reports, integrations or counters.

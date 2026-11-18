@@ -1,8 +1,8 @@
 name: Build installable plugin ZIPs (Free + Pro)
 
 # Free and Pro live in separate repositories:
-#   Free: Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce
-#   Pro:  Vertex-Systems-Network/wpessential-shipping-margin-monitor-pro-for-woocommerce
+#   Free: Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce
+#   Pro:  Vertex-Systems-Network/wpessential-shipping-cost-monitor-pro-for-woocommerce
 # This workflow is the same in both (only the push `paths:` list differs). A first job
 # pins one commit of each repository (the other repository's same-named branch if it
 # exists, else main); every later job checks out exactly those commits, Free into free/
@@ -31,8 +31,8 @@ permissions:
   contents: read
 
 env:
-  FREE_REPO: Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce
-  PRO_REPO: Vertex-Systems-Network/wpessential-shipping-margin-monitor-pro-for-woocommerce
+  FREE_REPO: Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce
+  PRO_REPO: Vertex-Systems-Network/wpessential-shipping-cost-monitor-pro-for-woocommerce
 
 jobs:
   resolve:

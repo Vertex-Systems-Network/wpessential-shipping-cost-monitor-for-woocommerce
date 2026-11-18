@@ -49,7 +49,7 @@ Full walkthrough: see the built-in documentation (below).
 
 The user guide ships inside the plugin. Open it from **Plugins → WPEssential Shipping Margin Monitor for WooCommerce → Documentation**, or with the **Documentation** button on the dashboard (**WooCommerce → Shipping Margin Monitor**). It explains every screen, field and number, with screenshots and a worked example, in nine chapters: install and first run; key ideas (evidence, tax basis and currency); recording a cost; reading the dashboard; CSV export; Pro invoice import; Pro ShipStation label costs; troubleshooting; and developer hooks.
 
-The same guide is published on the [GitHub wiki](https://github.com/Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce/wiki). The chapters are HTML files in `assets/docs/`, with screenshots in `assets/docs/images/`. Edit those files to change the guide.
+The same guide is published on the [GitHub wiki](https://github.com/Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce/wiki). The chapters are HTML files in `assets/docs/`, with screenshots in `assets/docs/images/`. Edit those files to change the guide.
 
 ## Repository layout
 
@@ -67,7 +67,7 @@ docs/                                       Product, architecture, QA gates and 
 There is no local build step. Free and Pro live in two repositories, and the same GitHub Actions workflow in each builds **both** plugins:
 
 - Free: this repository
-- Pro: `Vertex-Systems-Network/wpessential-shipping-margin-monitor-pro-for-woocommerce` (private). Pro works only when the free plugin is installed.
+- Pro: `Vertex-Systems-Network/wpessential-shipping-cost-monitor-pro-for-woocommerce` (private). Pro works only when the free plugin is installed.
 
 1. Open **Actions → Build installable plugin ZIPs (Free + Pro)** and click **Run workflow**, or push. Pull requests build too.
 2. The run checks out this repository and the other one. If the other repository has a branch with the same name, it uses that branch; otherwise it uses `main`. It then:
