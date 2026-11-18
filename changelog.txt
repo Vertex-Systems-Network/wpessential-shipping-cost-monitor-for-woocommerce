@@ -1,4 +1,4 @@
-*** Shipping Cost Monitor for WooCommerce Changelog ***
+*** WPEssential Shipping Margin Monitor for WooCommerce Changelog ***
 
 2026-11-11 - version 1.0.0
 * Add - Shipping-cost record on WooCommerce orders with private order-note history.
@@ -6,5 +6,6 @@
 * Add - Cost by shipping method.
 * Add - Privacy-minimized CSV export.
 * Add - Built-in documentation with screenshots (Documentation link on the Plugins screen and dashboard).
+* Tweak - Renamed to WPEssential Shipping Margin Monitor for WooCommerce (slug wpessential-shipping-margin-monitor-for-woocommerce).
 * Add - High-Performance Order Storage compatibility declaration.
 * Add - Extension hooks for add-ons: wpe_scm_init, wpe_scm_dashboard_data, wpe_scm_dashboard_enqueued, wpe_scm_carrier_adapters.

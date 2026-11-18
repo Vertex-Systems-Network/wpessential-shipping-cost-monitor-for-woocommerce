@@ -34,10 +34,10 @@ final class Page {
 	public function add_menu_page(): void {
 		$page_hook = add_submenu_page(
 			'woocommerce',
-			__( 'Shipping Cost Monitor', 'shipping-cost-monitor-for-woocommerce' ),
-			__( 'Shipping Cost Monitor', 'shipping-cost-monitor-for-woocommerce' ),
+			__( 'Shipping Margin Monitor', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			__( 'Shipping Margin Monitor', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
 			'manage_woocommerce',
-			'shipping-cost-monitor-for-woocommerce',
+			'wpessential-shipping-margin-monitor-for-woocommerce',
 			array( $this, 'render_page' )
 		);
 
@@ -121,7 +121,7 @@ final class Page {
 		 */
 		do_action( 'wpe_scm_dashboard_enqueued' );
 
-		wp_set_script_translations( 'wpe-scm-admin', 'shipping-cost-monitor-for-woocommerce' );
+		wp_set_script_translations( 'wpe-scm-admin', 'wpessential-shipping-margin-monitor-for-woocommerce' );
 	}
 
 	/**
@@ -130,8 +130,8 @@ final class Page {
 	public function render_page(): void {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			wp_die(
-				esc_html__( 'You do not have permission to view shipping cost reports.', 'shipping-cost-monitor-for-woocommerce' ),
-				esc_html__( 'Access denied', 'shipping-cost-monitor-for-woocommerce' ),
+				esc_html__( 'You do not have permission to view shipping cost reports.', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+				esc_html__( 'Access denied', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
 				array( 'response' => 403 )
 			);
 		}
@@ -151,7 +151,7 @@ final class Page {
 	 */
 	public static function docs_url( string $chapter = '' ): string {
 		$args = array(
-			'page' => 'shipping-cost-monitor-for-woocommerce',
+			'page' => 'wpessential-shipping-margin-monitor-for-woocommerce',
 			'tab'  => 'docs',
 		);
 		if ( '' !== $chapter && isset( self::chapters()[ $chapter ] ) ) {
@@ -167,16 +167,14 @@ final class Page {
 	 */
 	public static function chapters(): array {
 		return array(
-			'index'                 => __( 'Contents', 'shipping-cost-monitor-for-woocommerce' ),
-			'01-install'            => __( '1. Install and first run', 'shipping-cost-monitor-for-woocommerce' ),
-			'02-key-ideas'          => __( '2. Key ideas: evidence, tax and currency', 'shipping-cost-monitor-for-woocommerce' ),
-			'03-record-a-cost'      => __( '3. Recording a cost on an order', 'shipping-cost-monitor-for-woocommerce' ),
-			'04-dashboard'          => __( '4. Reading the dashboard', 'shipping-cost-monitor-for-woocommerce' ),
-			'05-csv-export'         => __( '5. Exporting the report as CSV', 'shipping-cost-monitor-for-woocommerce' ),
-			'06-pro-invoice-import' => __( '6. Pro: importing a courier invoice CSV', 'shipping-cost-monitor-for-woocommerce' ),
-			'07-pro-shipstation'    => __( '7. Pro: ShipStation label costs', 'shipping-cost-monitor-for-woocommerce' ),
-			'08-troubleshooting'    => __( '8. Troubleshooting and FAQ', 'shipping-cost-monitor-for-woocommerce' ),
-			'09-developers'         => __( '9. For developers: hooks and data', 'shipping-cost-monitor-for-woocommerce' ),
+			'index'                 => __( 'Contents', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			'01-install'            => __( '1. Install and first run', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			'02-key-ideas'          => __( '2. Key ideas: evidence, tax and currency', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			'03-record-a-cost'      => __( '3. Recording a cost on an order', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			'04-dashboard'          => __( '4. Reading the dashboard', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			'05-csv-export'         => __( '5. Exporting the report as CSV', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			'08-troubleshooting'    => __( '6. Troubleshooting and FAQ', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
+			'09-developers'         => __( '7. For developers: hooks and data', 'wpessential-shipping-margin-monitor-for-woocommerce' ),
 		);
 	}
 
@@ -206,9 +204,9 @@ final class Page {
 		);
 
 		echo '<div class="wrap wpe-scm-wrap wpe-scm-docs">';
-		echo '<div class="wpe-scm-docs-head"><h1>' . esc_html__( 'Shipping Cost Monitor documentation', 'shipping-cost-monitor-for-woocommerce' ) . '</h1>';
-		echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=shipping-cost-monitor-for-woocommerce' ) ) . '">' . esc_html__( 'Back to dashboard', 'shipping-cost-monitor-for-woocommerce' ) . '</a></div>';
-		echo '<div class="wpe-scm-docs-layout"><nav class="wpe-scm-docs-nav" aria-label="' . esc_attr__( 'Documentation chapters', 'shipping-cost-monitor-for-woocommerce' ) . '"><ul>';
+		echo '<div class="wpe-scm-docs-head"><h1>' . esc_html__( 'Shipping Margin Monitor documentation', 'wpessential-shipping-margin-monitor-for-woocommerce' ) . '</h1>';
+		echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=wpessential-shipping-margin-monitor-for-woocommerce' ) ) . '">' . esc_html__( 'Back to dashboard', 'wpessential-shipping-margin-monitor-for-woocommerce' ) . '</a></div>';
+		echo '<div class="wpe-scm-docs-layout"><nav class="wpe-scm-docs-nav" aria-label="' . esc_attr__( 'Documentation chapters', 'wpessential-shipping-margin-monitor-for-woocommerce' ) . '"><ul>';
 		foreach ( $chapters as $slug => $title ) {
 			$current = $slug === $chapter ? ' aria-current="page" class="is-current"' : '';
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $current is a fixed literal.

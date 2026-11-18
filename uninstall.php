@@ -11,6 +11,6 @@
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
-if ( ! file_exists( WP_PLUGIN_DIR . '/shipping-cost-monitor-pro-for-woocommerce/shipping-cost-monitor-pro-for-woocommerce.php' ) ) {
+if ( ! file_exists( WP_PLUGIN_DIR . '/wpessential-shipping-margin-monitor-pro-for-woocommerce/wpessential-shipping-margin-monitor-pro-for-woocommerce.php' ) ) {
 	delete_option( 'wpe_scm_shipstation_credentials' );
 }

@@ -111,45 +111,5 @@
 } )( window.wp );
 </code></pre>
 <p>Scripts enqueued on <code>wpe_scm_dashboard_enqueued</code> run after <code>wpe-scm-admin</code>, so <code>window.wpeScmDashboard</code> is already defined; the dashboard mounts on <code>DOMContentLoaded</code>, after footer scripts.</p>
-<h2 id="pro-ajax-endpoints">Pro AJAX endpoints</h2>
-<p>All require <code>manage_woocommerce</code>, a nonce from the dashboard data, and POST.</p>
-<table>
-<thead>
-<tr>
-<th>Action</th>
-<th>Nonce key</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>wpe_scm_match_preview</code></td>
-<td><code>match_nonce</code></td>
-<td>Match up to 50 <code>references[i][row]</code> / <code>references[i][reference]</code>. Read-only.</td>
-</tr>
-<tr>
-<td><code>wpe_scm_commit_invoice_rows</code></td>
-<td><code>import_nonce</code></td>
-<td>Save up to 50 matched rows. Never overwrites an existing cost. Idempotent per batch, row and order.</td>
-</tr>
-<tr>
-<td><code>wpe_scm_shipstation_connect</code></td>
-<td><code>carrier_nonce</code></td>
-<td>Test and store an API key.</td>
-</tr>
-<tr>
-<td><code>wpe_scm_shipstation_disconnect</code></td>
-<td><code>carrier_nonce</code></td>
-<td>Delete the stored key.</td>
-</tr>
-<tr>
-<td><code>wpe_scm_shipstation_sync</code></td>
-<td><code>carrier_sync_nonce</code></td>
-<td>Read one page of labels. Read-only.</td>
-</tr>
-</tbody>
-</table>
 <h2 id="building-the-plugins">Building the plugins</h2>
-<p>Free and Pro live in separate GitHub repositories (<code>shipping-cost-monitor-for-woocommerce</code> and <code>shipping-cost-monitor-pro-for-woocommerce</code>). Each runs the same GitHub Actions workflow (<code>.github/workflows/build-installable-zip.yml</code>), which checks out both and always builds both ZIPs. The workflow checks the Free/Pro contract, generates each plugin's PSR-4 autoloader, runs PHP 8.1–8.4 lint, checks versions and checks the free package for Pro code, then uploads the ZIPs. Runs in the public free repository upload only the free ZIP; the Pro ZIP is uploaded only by runs in the Pro repository. There is no npm or JavaScript build step; the admin UI uses WordPress's bundled React (<code>wp.element</code>).</p>
-<h2 id="pro-distribution">Pro distribution</h2>
-<p>Pro is sold on the WooCommerce.com Marketplace. WooCommerce.com handles billing and subscriptions, and delivers updates through its Update Manager, so Pro has no license-key code. Its header declares an <code>Update URI</code> on woocommerce.com so WordPress core never checks WordPress.org for it. After acceptance, WooCommerce.com's deployment adds a <code>Woo: &lt;product_id&gt;:&lt;hash&gt;</code> header to the package it distributes. Do not add it to the source by hand; check that the deployed package carries it.</p>
+<p>Free and Pro live in separate GitHub repositories (<code>wpessential-shipping-margin-monitor-for-woocommerce</code> and <code>wpessential-shipping-margin-monitor-pro-for-woocommerce</code>). Each runs the same GitHub Actions workflow (<code>.github/workflows/build-installable-zip.yml</code>), which checks out both and always builds both ZIPs. The workflow checks the Free/Pro contract, generates each plugin's PSR-4 autoloader, runs PHP 8.1–8.4 lint, checks versions and checks the free package for Pro code, then uploads the ZIPs. Runs in the public free repository upload only the free ZIP; the Pro ZIP is uploaded only by runs in the Pro repository. There is no npm or JavaScript build step; the admin UI uses WordPress's bundled React (<code>wp.element</code>).</p>

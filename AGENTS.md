@@ -15,7 +15,7 @@ If a task is ambiguous, report the conflict or assumption. This repository is AI
 
 ## Project rules
 
-- Product: **Shipping Cost Monitor for WooCommerce** by WPEssential (decision F-5). Do not put "WP" or a trademark at the start of the product name, slug or text domain.
+- Product: **WPEssential Shipping Margin Monitor for WooCommerce** by WPEssential (decision F-14, replacing the F-5 name "Shipping Cost Monitor for WooCommerce"). Slug, text domain, folder and main file: `wpessential-shipping-margin-monitor-for-woocommerce`. The name starts with the WPEssential brand; never put a third-party trademark (WooCommerce, WordPress) at the start, and keep "for WooCommerce" at the end. Pro: **WPEssential Shipping Margin Monitor Pro for WooCommerce**, `wpessential-shipping-margin-monitor-pro-for-woocommerce`.
 - Use the feature IDs in `docs/PRODUCT-SPEC.md`; check them before adding options, settings or workflows. Avoid duplicate capabilities under different names/screens.
 - The owner authorized the initial implementation on 2026-11-06; see `docs/OWNER-DECISION-REGISTER.md` for the accepted scope and limits. Phase 5 may proceed within that scope.
 - On 2026-11-07, the owner explicitly authorized a CI-only GitHub Actions workflow that builds a downloadable installable ZIP, generates the Composer PSR-4 vendor autoloader, runs PHP lint and checks PSR-4 loading. This is a narrow exception to the earlier no-build boundary. Do not add local CLI setup, an in-plugin CLI, npm, a JS bundler or unrelated build tooling. The approved React path remains plain JavaScript using WordPress-bundled `wp.element`.
@@ -26,7 +26,7 @@ If a task is ambiguous, report the conflict or assumption. This repository is AI
 - Carrier connections are optional adapters. Do not claim API access, supported regions or final-invoice data without provider-specific evidence.
 - No runtime AI service or customer-data transmission to an LLM is currently in scope.
 - Do not claim work, compatibility, tests, security review or Marketplace acceptance that has not been evidenced.
-- The GitHub repository is `Vertex-Systems-Network/shipping-cost-monitor-for-woocommerce` (F-9). The free plugin's slug, text domain, package folder and main file are `shipping-cost-monitor-for-woocommerce` (F-5). The Pro add-on `shipping-cost-monitor-pro-for-woocommerce` (F-7) lives in its own repository, `Vertex-Systems-Network/shipping-cost-monitor-pro-for-woocommerce` (F-11). This repository must never contain Pro code or a `pro/` folder; CI rejects it. Pro works only with the free plugin installed. Pro is sold on WooCommerce.com, which handles billing and updates (F-8); do not add licensing code.
+- The GitHub repository is `Vertex-Systems-Network/wpessential-shipping-cost-monitor-for-woocommerce` (F-9). The free plugin's slug, text domain, package folder and main file are `wpessential-shipping-margin-monitor-for-woocommerce` (F-5). The Pro add-on `wpessential-shipping-margin-monitor-pro-for-woocommerce` (F-7) lives in its own repository, `Vertex-Systems-Network/wpessential-shipping-cost-monitor-pro-for-woocommerce` (F-11). This repository must never contain Pro code or a `pro/` folder; CI rejects it. Pro works only with the free plugin installed. Pro is sold on WooCommerce.com, which handles billing and updates (F-8); do not add licensing code.
 - Keep status/progress in README aligned with actual evidence and mark target dates as proposed until approved.
 
 ## Keeping Free and Pro in step (F-11)
