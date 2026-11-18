@@ -7,8 +7,8 @@ free="$1"; pro="$2"; fail=0
 ok()  { echo "ok $*"; }
 bad() { echo "::error::$*"; fail=1; }
 # Join each PHP tree into one line so calls split across lines still match.
-free_php=$(find "$free/shipping-cost-monitor-for-woocommerce.php" "$free/includes" -name '*.php' -print0 | xargs -0 cat | tr '\n' ' ')
-pro_php=$(find "$pro/shipping-cost-monitor-pro-for-woocommerce.php" "$pro/includes" -name '*.php' -print0 | xargs -0 cat | tr '\n' ' ')
+free_php=$(find "$free/wpessential-shipping-margin-monitor-for-woocommerce.php" "$free/includes" -name '*.php' -print0 | xargs -0 cat | tr '\n' ' ')
+pro_php=$(find "$pro/wpessential-shipping-margin-monitor-pro-for-woocommerce.php" "$pro/includes" -name '*.php' -print0 | xargs -0 cat | tr '\n' ' ')
 
 hooks=$(grep -oE "add_(action|filter)\(\s*'wpe_scm_[a-z_]+'" <<<"$pro_php" | grep -oE "wpe_scm_[a-z_]+" | sort -u)
 [ -n "$hooks" ] || bad "No wpe_scm_ hooks found in Pro; the contract check cannot be right"
@@ -27,5 +27,5 @@ fi
 if grep -rq "wpeScmPro" "$free/assets/js"; then
   if grep -rq "wpeScmPro" "$pro/assets"; then ok "JS global wpeScmPro"; else bad "Free reads window.wpeScmPro, which Pro no longer sets"; fi
 fi
-if grep -q "^ \* Requires Plugins:.*shipping-cost-monitor-for-woocommerce" "$pro/shipping-cost-monitor-pro-for-woocommerce.php"; then ok "Pro requires Free"; else bad "Pro header must list shipping-cost-monitor-for-woocommerce in Requires Plugins"; fi
+if grep -q "^ \* Requires Plugins:.*wpessential-shipping-margin-monitor-for-woocommerce" "$pro/wpessential-shipping-margin-monitor-pro-for-woocommerce.php"; then ok "Pro requires Free"; else bad "Pro header must list wpessential-shipping-margin-monitor-for-woocommerce in Requires Plugins"; fi
 exit $fail

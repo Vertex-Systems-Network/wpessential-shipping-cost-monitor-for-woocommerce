@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Shipping Cost Monitor for WooCommerce
- * Plugin URI: https://wpessential.org/plugins/shipping-cost-monitor-for-woocommerce
+ * Plugin Name: WPEssential Shipping Margin Monitor for WooCommerce
+ * Plugin URI: https://github.com/Vertex-Systems-Network/wpessential-shipping-margin-monitor-for-woocommerce/wiki
  * Description: Shipping cost intelligence and margin reporting for WooCommerce.
  * Version: 1.0.0
  * Requires at least: 7.0
@@ -13,7 +13,7 @@
  * Author URI: https://wpessential.org
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: shipping-cost-monitor-for-woocommerce
+ * Text Domain: wpessential-shipping-margin-monitor-for-woocommerce
  *
  * @package WPEssentialShippingCostMonitor
  */
@@ -21,18 +21,25 @@
 defined( 'ABSPATH' ) || exit;
 
 /*
- * Test builds before decision F-5 were installed as wpessential-shipping-cost-monitor/.
- * Both copies declare the same functions, constants and classes, so if the old copy is
+ * Earlier test builds were installed under other folder names: wpessential-shipping-cost-monitor/
+ * (before decision F-5) and shipping-cost-monitor-for-woocommerce/ (before decision F-14).
+ * All copies declare the same functions, constants and classes, so if an old copy is
  * active (loaded before or after this file) this copy stays dormant and asks the admin
  * to deactivate the old one. It starts on the next request after that.
  */
-$wpe_scm_legacy_basename = 'wpessential-shipping-cost-monitor/wpessential-shipping-cost-monitor.php';
+$wpe_scm_legacy_basenames = array(
+	'wpessential-shipping-cost-monitor/wpessential-shipping-cost-monitor.php',
+	'shipping-cost-monitor-for-woocommerce/shipping-cost-monitor-for-woocommerce.php',
+);
+$wpe_scm_active_plugins  = (array) get_option( 'active_plugins', array() );
 $wpe_scm_network_plugins = is_multisite() ? (array) get_site_option( 'active_sitewide_plugins', array() ) : array();
-if (
-	defined( 'WPE_SCM_FILE' )
-	|| in_array( $wpe_scm_legacy_basename, (array) get_option( 'active_plugins', array() ), true )
-	|| isset( $wpe_scm_network_plugins[ $wpe_scm_legacy_basename ] )
-) {
+$wpe_scm_legacy_active   = false;
+foreach ( $wpe_scm_legacy_basenames as $wpe_scm_legacy_basename ) {
+	if ( in_array( $wpe_scm_legacy_basename, $wpe_scm_active_plugins, true ) || isset( $wpe_scm_network_plugins[ $wpe_scm_legacy_basename ] ) ) {
+		$wpe_scm_legacy_active = true;
+	}
+}
+if ( defined( 'WPE_SCM_FILE' ) || $wpe_scm_legacy_active ) {
 	add_action(
 		'admin_notices',
 		static function (): void {
@@ -42,8 +49,8 @@ if (
 			printf(
 				'<div class="notice notice-warning"><p>%s</p></div>',
 				esc_html__(
-					'Shipping Cost Monitor for WooCommerce is paused because an older build named "WPEssential Shipping Cost Monitor" is active. Deactivate the older build; your shipping cost records are kept.',
-					'shipping-cost-monitor-for-woocommerce'
+					'WPEssential Shipping Margin Monitor for WooCommerce is paused because an older build of this plugin (named "Shipping Cost Monitor") is active. Deactivate the older build; your shipping cost records are kept.',
+					'wpessential-shipping-margin-monitor-for-woocommerce'
 				)
 			);
 		}
@@ -77,8 +84,8 @@ if ( ! function_exists( 'wpe_scm_missing_woocommerce_notice' ) ) {
 		printf(
 			'<div class="notice notice-error"><p>%s</p></div>',
 			esc_html__(
-				'Shipping Cost Monitor for WooCommerce requires WooCommerce to be installed and active.',
-				'shipping-cost-monitor-for-woocommerce'
+				'WPEssential Shipping Margin Monitor for WooCommerce requires WooCommerce to be installed and active.',
+				'wpessential-shipping-margin-monitor-for-woocommerce'
 			)
 		);
 	}
@@ -96,8 +103,8 @@ if ( ! function_exists( 'wpe_scm_missing_autoloader_notice' ) ) {
 		printf(
 			'<div class="notice notice-error"><p>%s</p></div>',
 			esc_html__(
-				'Shipping Cost Monitor for WooCommerce is missing its generated files. Install the packaged plugin ZIP instead of the raw source.',
-				'shipping-cost-monitor-for-woocommerce'
+				'WPEssential Shipping Margin Monitor for WooCommerce is missing its generated files. Install the packaged plugin ZIP instead of the raw source.',
+				'wpessential-shipping-margin-monitor-for-woocommerce'
 			)
 		);
 	}
@@ -107,7 +114,7 @@ define( 'WPE_SCM_VERSION', '1.0.0' );
 define( 'WPE_SCM_FILE', __FILE__ );
 define( 'WPE_SCM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPE_SCM_URL', plugin_dir_url( __FILE__ ) );
-define( 'WPE_SCM_DOCS_URL', admin_url( 'admin.php?page=shipping-cost-monitor-for-woocommerce&tab=docs' ) );
+define( 'WPE_SCM_DOCS_URL', admin_url( 'admin.php?page=wpessential-shipping-margin-monitor-for-woocommerce&tab=docs' ) );
 
 $wpe_scm_build_id = 'source';
 $wpe_scm_build_file = WPE_SCM_DIR . 'BUILD-ID.txt';
@@ -153,12 +160,12 @@ add_filter(
 			$extra['docs']      = sprintf(
 				'<a href="%1$s">%2$s</a>',
 				esc_url( WPE_SCM_DOCS_URL ),
-				esc_html__( 'Documentation', 'shipping-cost-monitor-for-woocommerce' )
+				esc_html__( 'Documentation', 'wpessential-shipping-margin-monitor-for-woocommerce' )
 			);
 			$extra['dashboard'] = sprintf(
 				'<a href="%1$s">%2$s</a>',
-				esc_url( admin_url( 'admin.php?page=shipping-cost-monitor-for-woocommerce' ) ),
-				esc_html__( 'Dashboard', 'shipping-cost-monitor-for-woocommerce' )
+				esc_url( admin_url( 'admin.php?page=wpessential-shipping-margin-monitor-for-woocommerce' ) ),
+				esc_html__( 'Dashboard', 'wpessential-shipping-margin-monitor-for-woocommerce' )
 			);
 		}
 		return array_merge( $links, $extra );

@@ -15,7 +15,7 @@
 
 ## Navigation and page hierarchy
 
-Add a **WooCommerce → Shipping Cost Monitor** entry, with these screens:
+Add a **WooCommerce → Shipping Margin Monitor** entry, with these screens:
 
 | Screen | Primary job | Access/availability |
 |---|---|---|
